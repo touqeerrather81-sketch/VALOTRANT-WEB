@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="only light">
+  <title>Admin — RIVALRY</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h32l-8 32H0z' fill='%23d51f2a'/%3E%3Ctext x='6' y='24' font-size='22' font-weight='900' font-family='Arial' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --ink: #191919;
+      --muted: #686868;
+      --red: #d51f2a;
+      --line: #e5e5e5;
+      --soft: #f7f7f7;
+      --ok: #1a7f37;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: only light; background: #fff; }
+
+    body {
+      font: 16px/1.55 Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--soft);
+      min-height: 100vh;
+    }
+
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+
+    :focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+
+    .wrap { width: min(1040px, calc(100% - 32px)); margin: 0 auto; }
+
+    header { background: #fff; border-bottom: 1px solid var(--line); }
+    .bar { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 21px; font-weight: 900; letter-spacing: -1px; }
+    .mark {
+      width: 30px; height: 30px; display: grid; place-items: center;
+      background: var(--red); color: #fff; font-size: 19px;
+      clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%);
+    }
+    .brand small { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: 0; margin-left: 4px; }
+
+    .bar-actions { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 700; }
+    .linklike { background: none; border: 0; font: inherit; font-weight: 700; color: var(--muted); cursor: pointer; }
+    .linklike:hover, .bar-actions a:hover { color: var(--red); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 46px; padding: 11px 22px;
+      border: 1px solid var(--red); background: var(--red); color: #fff;
+      font: inherit; font-size: 15px; font-weight: 800; cursor: pointer;
+    }
+    .btn:hover { background: #b91923; border-color: #b91923; }
+    .btn:disabled { opacity: .55; cursor: not-allowed; }
+    .btn.ghost { background: #fff; color: var(--ink); border-color: var(--line); font-size: 14px; min-height: 38px; padding: 7px 14px; }
+    .btn.ghost:hover { border-color: var(--ink); background: #fff; }
+
+    /* LOGIN */
+    .login { max-width: 400px; margin: 70px auto; padding: 28px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--red); }
+    .login h1 { font-size: 24px; letter-spacing: -.5px; margin-bottom: 4px; }
+    .login p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+
+    /* FORM */
+    label, .label { display: block; font-size: 14px; font-weight: 800; margin-bottom: 6px; }
+    .hint { color: var(--muted); font-size: 13px; font-weight: 400; margin-top: 5px; }
+
+    input[type="text"], input[type="password"], input[type="number"], input[type="url"], input[type="datetime-local"], textarea {
+      width: 100%; min-height: 46px; padding: 10px 12px;
+      border: 1px solid #cfcfcf; background: #fff; color: var(--ink);
+      font: inherit; font-size: 15px; border-radius: 0;
+    }
+    input:focus, textarea:focus { border-color: var(--red); }
+
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; padding: 32px 0 110px; align-items: start; }
+
+    fieldset { border: 1px solid var(--line); background: #fff; padding: 22px; margin-bottom: 20px; min-width: 0; }
+    legend { padding: 0 8px; margin-left: -8px; font-size: 17px; font-weight: 900; letter-spacing: -.3px; }
+    .field { margin-bottom: 18px; }
+    .field:last-child { margin-bottom: 0; }
+    .row { display: flex; gap: 10px; align-items: stretch; }
+    .row > :first-child { flex: 1; min-width: 0; }
+
+    /* status switch */
+    .seg { display: inline-flex; border: 1px solid #cfcfcf; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label {
+      margin: 0; padding: 11px 22px; font-size: 14px; cursor: pointer; background: #fff;
+    }
+    .seg label + input + label, .seg input + label + input + label { border-left: 1px solid #cfcfcf; }
+    .seg input:checked + label { background: var(--ink); color: #fff; }
+    .seg input:checked + label.open { background: var(--ok); }
+    .seg input:checked + label.closed { background: var(--red); }
+    .seg input:focus-visible + label { outline: 3px solid var(--red); outline-offset: 2px; }
+
+    .count { float: right; color: var(--muted); font-size: 12px; font-weight: 400; }
+
+    /* PREVIEW */
+    .preview { position: sticky; top: 16px; background: #fff; border: 1px solid var(--line); }
+    .preview h2 { padding: 14px 18px; font-size: 14px; border-bottom: 1px solid var(--line); }
+    .pv-banner { padding: 10px 18px; background: var(--red); color: #fff; font-size: 13px; text-align: center; }
+    .pv-item { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+    .pv-item:last-child { border-bottom: 0; }
+    .pv-label { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .pv-value { font-size: 21px; font-weight: 900; letter-spacing: -.4px; line-height: 1.25; overflow-wrap: anywhere; }
+    .pv-value.red { color: var(--red); }
+    .pv-sub { color: var(--muted); font-size: 13px; }
+    .pv-status { display: inline-block; padding: 2px 10px; font-size: 13px; font-weight: 800; color: #fff; }
+    .pv-status.open { background: var(--ok); }
+    .pv-status.closed { background: var(--red); }
+
+    /* SAVE BAR */
+    .savebar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: #fff; border-top: 1px solid var(--line); }
+    .savebar .wrap { min-height: 72px; display: flex; align-items: center; gap: 16px; padding: 10px 0; }
+    .msg { font-size: 14px; font-weight: 700; min-width: 0; }
+    .msg.ok { color: var(--ok); }
+    .msg.err { color: var(--red); }
+    .msg.dirty { color: var(--muted); }
+
+    .notice { margin-bottom: 20px; padding: 14px 16px; background: #fff8e1; border-left: 4px solid #f0a500; font-size: 14px; }
+    .notice b { display: block; margin-bottom: 4px; }
+    .notice ol { margin: 6px 0 0 20px; }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; padding-bottom: 120px; }
+      .preview { position: static; }
+    }
+
+    @media (max-width: 520px) {
+      fieldset { padding: 16px; }
+      .row { flex-direction: column; }
+      .brand small { display: none; }
+      .savebar .wrap { flex-direction: column; align-items: stretch; gap: 6px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap bar">
+      <a class="brand" href="/admin" aria-label="Admin home"><span class="mark">R</span><span>RIVALRY</span><small>Admin</small></a>
+      <div class="bar-actions" id="bar-actions" hidden>
+        <a href="/" target="_blank" rel="noopener">View site ↗</a>
+        <button class="linklike" id="signout" type="button">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- LOGIN -->
+  <main class="wrap" id="login-view">
+    <form class="login" id="login-form" novalidate>
+      <h1>Admin sign in</h1>
+      <p>Enter your admin password to change the website details.</p>
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <p class="msg err" id="login-error" role="alert" hidden></p>
+      </div>
+      <button class="btn" id="login-btn" type="submit" style="width:100%">Sign in</button>
+    </form>
+  </main>
+
+  <!-- EDITOR -->
+  <main class="wrap" id="editor-view" hidden>
+    <div class="layout">
+      <form id="settings-form" novalidate>
+
+        <div class="notice" id="kv-notice" hidden>
+          <b>Saving is not set up yet</b>
+          The website cannot store changes until storage is connected in Cloudflare:
+          <ol>
+            <li>Workers &amp; Pages → your project → Settings → Bindings → add a KV namespace with the variable name <code>SETTINGS</code>.</li>
+            <li>Deploy the site again, then reload this page.</li>
+          </ol>
+        </div>
+
+        <fieldset>
+          <legend>Tournament</legend>
+
+          <div class="field">
+            <label for="tournamentDate">Date and time</label>
+            <div class="row">
+              <input id="tournamentDate" type="datetime-local">
+              <button class="btn ghost" id="clear-date" type="button">Clear date</button>
+            </div>
+            <p class="hint">India time (IST). Leave empty to show “Date soon”.</p>
+          </div>
+
+          <div class="field">
+            <label for="prizePool">Prize pool</label>
+            <input id="prizePool" type="text" maxlength="60" placeholder="₹2,000">
+            <p class="hint">Any text works, for example “₹2,000” or “₹1,500 + goodies”. Leave empty to show “To be announced”.</p>
+          </div>
+
+          <div class="field">
+            <label for="entryFee">Entry fee per team (₹)</label>
+            <input id="entryFee" type="number" min="0" max="100000" step="1" inputmode="numeric">
+            <p class="hint">Shown on the home page and the payment page. The UPI button on the payment page uses this amount too.</p>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Registration</legend>
+
+          <div class="field">
+            <span class="label" id="status-label">Status</span>
+            <div class="seg" role="radiogroup" aria-labelledby="status-label">
+              <input type="radio" name="status" id="st-open" value="open">
+              <label class="open" for="st-open">Open</label>
+              <input type="radio" name="status" id="st-closed" value="closed">
+              <label class="closed" for="st-closed">Closed</label>
+            </div>
+            <p class="hint">When closed, the register and payment buttons are disabled and the payment page asks people not to send money.</p>
+          </div>
+
+          <div class="field">
+            <label for="announcement">Announcement <span class="count" id="ann-count">0 / 200</span></label>
+            <textarea id="announcement" rows="2" maxlength="200" placeholder="Registration closes on Friday at 8 PM."></textarea>
+            <p class="hint">Shows as a bar at the top of every page. Leave empty for no bar.</p>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Links</legend>
+
+          <div class="field">
+            <label for="formUrl">Registration form link</label>
+            <input id="formUrl" type="url" placeholder="https://docs.google.com/forms/…">
+            <p class="hint">Leave empty to keep the form already on the site.</p>
+          </div>
+
+          <div class="field">
+            <label for="discordUrl">Discord invite link</label>
+            <input id="discordUrl" type="url" placeholder="https://discord.gg/…">
+          </div>
+
+          <div class="field">
+            <label for="whatsappUrl">WhatsApp group link</label>
+            <input id="whatsappUrl" type="url" placeholder="https://chat.whatsapp.com/…">
+            <p class="hint">The community section appears on the site only when Discord or WhatsApp has a link.</p>
+          </div>
+        </fieldset>
+
+        <p class="hint">The UPI ID and QR code cannot be changed from here on purpose. To change them, replace the files and deploy again.</p>
+      </form>
+
+      <aside class="preview" aria-label="Preview">
+        <h2>Preview</h2>
+        <div class="pv-banner" id="pv-banner" hidden></div>
+        <div class="pv-item">
+          <div class="pv-label">Starts in</div>
+          <div class="pv-value red" id="pv-date">Date soon</div>
+          <div class="pv-sub" id="pv-date-sub" hidden></div>
+        </div>
+        <div class="pv-item"><div class="pv-label">Prize pool</div><div class="pv-value" id="pv-prize">To be announced</div></div>
+        <div class="pv-item"><div class="pv-label">Entry fee</div><div class="pv-value" id="pv-fee">₹50 / team</div></div>
+        <div class="pv-item"><div class="pv-label">Registration</div><span class="pv-status open" id="pv-status">Open</span></div>
+      </aside>
+    </div>
+
+    <div class="savebar">
+      <div class="wrap">
+        <button class="btn" id="save" type="button">Save changes</button>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var TOKEN_KEY = "rivalry-admin-token";
+      var $ = function (id) { return document.getElementById(id); };
+      var token = "";
+      var dirty = false;
+
+      var f = {
+        date: $("tournamentDate"), prize: $("prizePool"), fee: $("entryFee"),
+        open: $("st-open"), closed: $("st-closed"), ann: $("announcement"),
+        form: $("formUrl"), discord: $("discordUrl"), whatsapp: $("whatsappUrl")
+      };
+
+      /* ---------- helpers ---------- */
+
+      function api(path, opts) {
+        opts = opts || {};
+        opts.headers = Object.assign({ "authorization": "Bearer " + token }, opts.headers || {});
+        opts.cache = "no-store";
+        return fetch(path, opts).then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (data) {
+            if (!r.ok) { var e = new Error(data.error || "Something went wrong (" + r.status + ")."); e.status = r.status; throw e; }
+            return data;
+          });
+        });
+      }
+
+      function setMsg(text, kind) {
+        var m = $("msg");
+        m.textContent = text || "";
+        m.className = "msg" + (kind ? " " + kind : "");
+      }
+
+      function showEditor(on) {
+        $("login-view").hidden = on;
+        $("editor-view").hidden = !on;
+        $("bar-actions").hidden = !on;
+      }
+
+      function formatDate(local) {
+        // local = "YYYY-MM-DDTHH:mm" in IST
+        var d = new Date(local + ":00+05:30");
+        if (isNaN(d.getTime())) return "";
+        return new Intl.DateTimeFormat("en-IN", {
+          timeZone: "Asia/Kolkata", weekday: "short", day: "numeric", month: "short",
+          hour: "numeric", minute: "2-digit", hour12: true
+        }).format(d) + " IST";
+      }
+
+      function countdownText(local) {
+        var t = new Date(local + ":00+05:30").getTime();
+        if (isNaN(t)) return "Date soon";
+        var diff = t - Date.now();
+        if (diff <= 0) return "Live now";
+        var d = Math.floor(diff / 864e5), h = Math.floor(diff % 864e5 / 36e5), m = Math.floor(diff % 36e5 / 6e4);
+        return d + "d " + h + "h " + m + "m";
+      }
+
+      /* ---------- preview ---------- */
+
+      function updatePreview() {
+        var v = f.date.value;
+        $("pv-date").textContent = v ? countdownText(v) : "Date soon";
+        var sub = $("pv-date-sub");
+        sub.hidden = !v;
+        sub.textContent = v ? formatDate(v) : "";
+
+        $("pv-prize").textContent = f.prize.value.trim() || "To be announced";
+        $("pv-fee").textContent = "₹" + (f.fee.value === "" ? "0" : f.fee.value) + " / team";
+
+        var isOpen = f.open.checked;
+        var st = $("pv-status");
+        st.textContent = isOpen ? "Open" : "Closed";
+        st.className = "pv-status " + (isOpen ? "open" : "closed");
+
+        var b = $("pv-banner");
+        var a = f.ann.value.trim();
+        b.hidden = !a;
+        b.textContent = a;
+
+        $("ann-count").textContent = f.ann.value.length + " / 200";
+      }
+
+      function markDirty() {
+        dirty = true;
+        updatePreview();
+        setMsg("You have unsaved changes.", "dirty");
+      }
+
+      /* ---------- load / save ---------- */
+
+      function fill(s) {
+        s = s || {};
+        f.date.value = s.tournamentDate ? String(s.tournamentDate).slice(0, 16) : "";
+        f.prize.value = s.prizePool || "";
+        f.fee.value = (s.entryFee === undefined || s.entryFee === null) ? 50 : s.entryFee;
+        var isOpen = s.registrationOpen !== false;
+        f.open.checked = isOpen;
+        f.closed.checked = !isOpen;
+        f.ann.value = s.announcement || "";
+        f.form.value = s.formUrl || "";
+        f.discord.value = s.discordUrl || "";
+        f.whatsapp.value = s.whatsappUrl || "";
+        dirty = false;
+        updatePreview();
+      }
+
+      function collect() {
+        return {
+          tournamentDate: f.date.value ? f.date.value + ":00+05:30" : "",
+          prizePool: f.prize.value.trim(),
+          entryFee: f.fee.value === "" ? NaN : Number(f.fee.value),
+          registrationOpen: f.open.checked,
+          announcement: f.ann.value.trim(),
+          formUrl: f.form.value.trim(),
+          discordUrl: f.discord.value.trim(),
+          whatsappUrl: f.whatsapp.value.trim()
+        };
+      }
+
+      function loadSettings() {
+        return fetch("/api/settings?t=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : {}; })
+          .catch(function () { return {}; })
+          .then(fill);
+      }
+
+      function enter(kvReady) {
+        showEditor(true);
+        $("kv-notice").hidden = kvReady !== false;
+        setMsg("");
+        loadSettings();
+      }
+
+      function save() {
+        var data = collect();
+        if (!isFinite(data.entryFee) || data.entryFee < 0 || Math.floor(data.entryFee) !== data.entryFee) {
+          setMsg("Entry fee must be a whole number, for example 50.", "err");
+          f.fee.focus();
+          return;
+        }
+        var btn = $("save");
+        btn.disabled = true;
+        setMsg("Saving…");
+        api("/api/settings", {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(function (saved) {
+          fill(saved);
+          setMsg("Saved. The live site shows it within a minute.", "ok");
+        }).catch(function (e) {
+          if (e.status === 401) { signOut("Your session ended. Sign in again."); return; }
+          setMsg(e.message, "err");
+        }).then(function () { btn.disabled = false; });
+      }
+
+      /* ---------- auth ---------- */
+
+      function signOut(note) {
+        token = "";
+        try { sessionStorage.removeItem(TOKEN_KEY); } catch (e) {}
+        showEditor(false);
+        $("password").value = "";
+        var err = $("login-error");
+        err.hidden = !note;
+        err.textContent = note || "";
+      }
+
+      function login(pw, silent) {
+        token = pw;
+        var btn = $("login-btn");
+        btn.disabled = true;
+        return api("/api/login", { method: "POST" }).then(function (res) {
+          try { sessionStorage.setItem(TOKEN_KEY, pw); } catch (e) {}
+          enter(res.kvReady);
+        }).catch(function (e) {
+          token = "";
+          try { sessionStorage.removeItem(TOKEN_KEY); } catch (x) {}
+          if (!silent) {
+            var err = $("login-error");
+            err.hidden = false;
+            err.textContent = e.message;
+          }
+        }).then(function () { btn.disabled = false; });
+      }
+
+      /* ---------- events ---------- */
+
+      $("login-form").addEventListener("submit", function (ev) {
+        ev.preventDefault();
+        var pw = $("password").value;
+        if (!pw) { var err = $("login-error"); err.hidden = false; err.textContent = "Enter your password."; return; }
+        $("login-error").hidden = true;
+        login(pw, false);
+      });
+
+      $("signout").addEventListener("click", function () { signOut(""); });
+      $("save").addEventListener("click", save);
+      $("clear-date").addEventListener("click", function () { f.date.value = ""; markDirty(); });
+      $("settings-form").addEventListener("submit", function (ev) { ev.preventDefault(); save(); });
+
+      ["input", "change"].forEach(function (evt) {
+        $("settings-form").addEventListener(evt, markDirty);
+      });
+
+      window.addEventListener("beforeunload", function (ev) {
+        if (dirty) { ev.preventDefault(); ev.returnValue = ""; }
+      });
+
+      setInterval(function () { if (!$("editor-view").hidden) updatePreview(); }, 30000);
+
+      /* resume session */
+      var saved = "";
+      try { saved = sessionStorage.getItem(TOKEN_KEY) || ""; } catch (e) {}
+      if (saved) login(saved, true);
+    })();
+  </script>
+</body>
+</html>

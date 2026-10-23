@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <title>Payment — RIVALRY 5v5</title>
+  <meta name="description" content="Pay the RIVALRY 5v5 Squad Showdown entry fee by UPI, then upload your payment screenshot in the registration form.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Payment — RIVALRY 5v5">
+  <meta property="og:description" content="Pay the entry fee by UPI, then register your team.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h32l-8 32H0z' fill='%23d51f2a'/%3E%3Ctext x='6' y='24' font-size='22' font-weight='900' font-family='Arial' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+<script>(function(){try{var t=localStorage.getItem("rivalry-theme");if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <style>
+    :root{--ink:#191919;--muted:#686868;--red:#d51f2a;--line:#e7e7e7;--soft:#f7f7f7}
+    *{box-sizing:border-box}body{margin:0;background:var(--soft);color:var(--ink);font:16px/1.55 Arial,Helvetica,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(960px,calc(100% - 36px));margin:0 auto}
+    header{height:76px;background:#fff;border-bottom:1px solid var(--line)}.nav{height:100%;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:900;letter-spacing:-1px}.mark{display:grid;place-items:center;width:32px;height:32px;background:var(--red);color:white;clip-path:polygon(0 0,100% 0,76% 100%,0 100%)}
+    .back{font-size:14px;font-weight:700;color:var(--muted)}.back:hover{color:var(--red)}
+    main{padding:44px 0 56px}.eyebrow{color:var(--red);font-weight:800;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+    h1{font-size:clamp(30px,5vw,46px);letter-spacing:-1.5px;line-height:1.08;margin:8px 0 10px}.intro{color:var(--muted);margin:0 0 28px}
+    .panel{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:38px;align-items:center;background:white;border:1px solid var(--line);padding:28px}
+    .amount{font-size:30px;font-weight:900;color:var(--red);margin:0 0 4px}.per{font-size:14px;color:var(--muted)}
+    .steps{padding-left:21px;margin:24px 0;color:#333}.steps li{padding:5px 0 5px 3px}.upi{font-weight:800;overflow-wrap:anywhere;margin:20px 0 4px}.hint{font-size:13px;color:var(--muted);margin:0}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:11px 17px;background:var(--red);border:1px solid var(--red);color:#fff;font-size:14px;font-weight:800}.button:hover{background:#b91923}.button.secondary{background:#fff;color:var(--ink);border-color:var(--line)}.button.secondary:hover{border-color:var(--ink)}
+    .qr-card{padding:16px;border:1px solid var(--line);background:#fff;text-align:center}.qr{display:block;width:min(100%,300px);height:auto;max-height:410px;object-fit:contain;margin:0 auto 10px}.scan{font-size:13px;color:var(--muted);margin:0}
+    .safe{margin-top:18px;padding:13px 15px;background:#fff8f8;border-left:3px solid var(--red);font-size:13px;color:#494949}
+    @media(max-width:720px){main{padding-top:30px}.panel{grid-template-columns:1fr;gap:24px;padding:20px}.qr-card{max-width:390px;margin:auto}.qr{width:min(100%,280px);max-height:none}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+    html[data-theme="dark"]{color-scheme:dark;--ink:#f4f4f4;--muted:#b7b7b7;--line:#3b3b3b;--soft:#191919;background:var(--soft)}
+    html[data-theme="dark"] header,html[data-theme="dark"] .panel,html[data-theme="dark"] .qr-card,html[data-theme="dark"] .button.secondary{background:#202020}
+    html[data-theme="dark"] .safe{background:#302323;color:#eee}
+    .theme-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:7px 11px;border:1px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:12px;font-weight:800;cursor:pointer}
+    .theme-toggle:hover{border-color:var(--red);color:var(--red)}
+  @media(max-width:720px){header{height:auto}.nav{height:auto;min-height:68px;padding:12px 0;gap:10px;flex-wrap:wrap}.nav .back{order:3;width:100%}}
+    [hidden]{display:none!important}
+    .site-banner{padding:10px 16px;background:var(--red);color:#fff;font-size:14px;font-weight:700;text-align:center}
+    .is-closed,.button.is-closed:hover{background:#8a8a8a;border-color:#8a8a8a;color:#fff;pointer-events:none;cursor:not-allowed}
+    .closed-box{padding:28px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red)}
+    .closed-box h2{margin:0 0 6px;font-size:22px}.closed-box p{margin:0;color:var(--muted)}
+    .after{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}.after p{margin:0 0 12px;font-weight:700}
+    html[data-theme="dark"] .closed-box{background:#202020}
+</style>
+</head>
+<body>
+  <div class="site-banner" id="site-banner" role="status" hidden></div>
+  <header><div class="wrap nav"><a class="brand" href="index.html"><span class="mark">R</span><span>RIVALRY</span></a><button class="theme-toggle" type="button" data-theme-toggle>☾ Dark mode</button><a class="back" href="index.html#tournaments">← Back to tournament</a></div></header>
+  <main class="wrap">
+    <div class="eyebrow">SECURE YOUR TEAM ENTRY</div>
+    <h1>Payment</h1>
+    <p class="intro">Pay the entry fee, keep your receipt, then finish registration for the 5v5 Squad Showdown.</p>
+    <section class="closed-box" data-show-when-closed hidden>
+      <h2>Registration is closed</h2>
+      <p>Please do not send any payment. Check the home page for the next tournament.</p>
+    </section>
+    <section class="panel" data-hide-when-closed aria-label="5v5 tournament payment details">
+      <div>
+        <p class="amount">₹<span data-fee>50</span> <span class="per">/ team of five</span></p>
+        <p>Scan this QR code with any UPI app. Check the amount and recipient in your app before you approve the payment.</p>
+        <ol class="steps"><li>Pay ₹<span data-fee>50</span> for your team.</li><li>Save a screenshot after the payment succeeds.</li><li>Open the registration form and upload the screenshot with your team details.</li><li>Your entry is confirmed after the organizer verifies payment.</li></ol>
+        <p class="upi">UPI ID: <span id="upi-id">touqeerrather81@okaxis</span></p>
+        <p class="hint">Use the QR code or enter this UPI ID in your payment app.</p>
+        <div class="actions"><a class="button" data-upi-link href="upi://pay?pa=touqeerrather81%40okaxis&amp;pn=Touqeer%20Rather&amp;am=50&amp;cu=INR&amp;tn=RIVALRY%205v5%20team%20entry">Open UPI app ↗</a><button class="button secondary" id="copy-upi" type="button">Copy UPI ID</button></div>
+        <div class="safe">Never share your UPI PIN or OTP. Approve the payment only in your UPI app.</div>
+        <div class="after"><p>Paid? Now register your team and upload the screenshot.</p><a class="button secondary" data-register href="https://docs.google.com/forms/d/e/1FAIpQLSfw6G-g8LRn0vU9rZR_8rd8_B0Dm9-NSzytuzk2z2aziRE_Yg/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">Open registration form ↗</a></div>
+      </div>
+      <div class="qr-card"><img class="qr" src="images/rivalry-payment-qr.jpeg" width="1152" height="1536" alt="Touqeer Rather's UPI payment QR code"><p class="scan">Scan to pay with any UPI app</p></div>
+    </section>
+  </main>
+  <script src="site-settings.js"></script>
+  <script>
+    document.getElementById('copy-upi').addEventListener('click',async function(){try{await navigator.clipboard.writeText('touqeerrather81@okaxis');this.textContent='Copied!'}catch(e){this.textContent='Select the UPI ID above'}});
+    (function(){var toggle=document.querySelector('[data-theme-toggle]');function sync(){var dark=document.documentElement.dataset.theme==='dark';toggle.textContent=dark?'☀ Light mode':'☾ Dark mode';toggle.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode')}sync();toggle.addEventListener('click',function(){var dark=document.documentElement.dataset.theme!=='dark';if(dark)document.documentElement.dataset.theme='dark';else delete document.documentElement.dataset.theme;try{localStorage.setItem('rivalry-theme',dark?'dark':'light')}catch(e){}sync()})})();
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,1110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="only light">
+  <meta name="supported-color-schemes" content="light">
+
+  <title>RIVALRY — Valorant Community Tournaments</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h32l-8 32H0z' fill='%23d51f2a'/%3E%3Ctext x='6' y='24' font-size='22' font-weight='900' font-family='Arial' fill='white'%3ER%3C/text%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="RIVALRY — Valorant Community Tournaments">
+  <meta property="og:description" content="5v5 Squad Showdown. Register your five-player team and prove your skill.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" href="images/valorant-hero.webp">
+  <meta name="description" content="Compete in RIVALRY Valorant community tournaments. Join the 5v5 Squad Showdown tournament.">
+
+<script>(function(){try{var t=localStorage.getItem("rivalry-theme");if(t==="dark")document.documentElement.dataset.theme="dark";}catch(e){}})();</script>
+  <style>
+    :root {
+      --white: #ffffff;
+      --black: #191919;
+      --red: #d51f2a;
+      --muted: #686868;
+      --border: #e5e5e5;
+      --soft: #f7f7f7;
+      --max-width: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      color-scheme: only light;
+      background: #ffffff;
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 620px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -1.3px;
+      margin: 8px 0 12px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      color: white;
+      font-size: 21px;
+      font-weight: 900;
+      clip-path: polygon(0 0, 100% 0, 76% 100%, 0 100%);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: var(--red);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border: 1px solid var(--red);
+      background: var(--red);
+      color: white;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .button:hover {
+      background: #b91923;
+      border-color: #b91923;
+    }
+
+    .button-outline {
+      color: var(--red);
+      background: white;
+    }
+
+    .button-outline:hover {
+      background: var(--red);
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 76px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .hero h1 {
+      max-width: 620px;
+      margin: 15px 0 20px;
+      font-size: clamp(43px, 6vw, 72px);
+      line-height: 0.99;
+      letter-spacing: -4px;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: var(--red);
+    }
+
+    .hero-copy {
+      max-width: 490px;
+      margin-bottom: 27px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+
+    .hero-art {
+      min-height: 410px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #f5f5f5;
+      border: 1px solid var(--border);
+    }
+
+    .hero-art::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 8px;
+      height: 100%;
+      background: var(--red);
+    }
+
+
+
+
+
+
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 410px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* TOURNAMENTS */
+
+    .tournaments {
+      padding: 80px 0;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 620px);
+      gap: 20px;
+    }
+
+    .mode-card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .mode-image {
+      position: relative;
+      min-height: 210px;
+      height: 210px;
+      overflow: hidden;
+      background: #f4f4f4;
+      border-bottom: 1px solid var(--border);
+    }
+
+   .mode-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+
+    .mode-content {
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .mode-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 17px;
+    }
+
+    .mode-number {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+    }
+
+    .mode-tag {
+      padding: 3px 9px;
+      background: #fff0f1;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .mode-card h3 {
+      margin-bottom: 9px;
+      font-size: 23px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .mode-card p {
+      min-height: 72px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mode-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .price {
+      font-size: 23px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .details-link {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .details-link:hover {
+      text-decoration: underline;
+    }
+
+    .pricing-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    /* HOW IT WORKS */
+
+    .how-it-works {
+      padding: 75px 0;
+      background: var(--soft);
+      border-block: 1px solid var(--border);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: minmax(0, 620px);
+      gap: 25px;
+    }
+
+    .step {
+      padding-top: 17px;
+      border-top: 2px solid var(--red);
+    }
+
+    .step-number {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .step h3 {
+      margin: 10px 0 7px;
+      font-size: 18px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* AGENTS */
+
+    .abilities {
+      padding: 65px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ability-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .ability-slot {
+      aspect-ratio: 3 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: white;
+    }
+
+    .ability-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+
+
+    /* CTA */
+
+    .final-cta {
+      padding: 72px 0;
+    }
+
+    .cta-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      border-left: 5px solid var(--red);
+      padding: 10px 0 10px 28px;
+    }
+
+    .cta-layout h2 {
+      margin: 8px 0;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    .cta-layout p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* FOOTER */
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      padding: 27px 0;
+    }
+
+    .footer-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-links a:hover {
+      color: var(--red);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-art {
+        min-height: 340px;
+      }
+
+      .hero-image {
+        min-height: 340px;
+      }
+
+      .mode-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .mode-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      }
+
+      .mode-image {
+        height: 100%;
+        min-height: 250px;
+        border-bottom: 0;
+        border-right: 1px solid var(--border);
+      }
+
+
+      .mode-card p {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 30px);
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .brand {
+        font-size: 22px;
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-links .nav-secondary {
+        display: none;
+      }
+
+      .nav-links .button {
+        min-height: 39px;
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 53px 0 48px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 12vw, 61px);
+        letter-spacing: -2.5px;
+      }
+
+      .hero-copy {
+        font-size: 14px;
+      }
+
+      .hero-art {
+        min-height: 285px;
+      }
+
+      .hero-image {
+        min-height: 285px;
+      }
+
+      .tournaments,
+      .how-it-works {
+        padding: 55px 0;
+      }
+
+      .mode-card {
+        grid-template-columns: 1fr;
+      }
+
+      .mode-image {
+        height: 205px;
+        min-height: 205px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+
+      .mode-content {
+        padding: 20px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .ability-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+
+
+      .final-cta {
+        padding: 52px 0;
+      }
+
+      .cta-layout {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 18px;
+      }
+
+      .footer-layout {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+    /* FOCUS + MOTION */
+
+    a:focus-visible, summary:focus-visible, .button:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; }
+    }
+
+    [hidden] { display: none !important; }
+
+    /* INFO STRIP */
+
+    .info-strip { border-bottom: 1px solid var(--border); background: #ffffff; }
+
+    .info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .info-item { padding: 26px 22px; border-right: 1px solid var(--border); }
+    .info-item:first-child { border-left: 1px solid var(--border); }
+
+    .info-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      margin-top: 6px;
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .info-value.is-red { color: var(--red); }
+
+    /* RULES */
+
+    .rules { padding: 75px 0; background: var(--soft); border-block: 1px solid var(--border); }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 30px;
+      list-style: none;
+    }
+
+    .rules-grid li {
+      display: flex;
+      gap: 14px;
+      padding: 16px 18px;
+      background: white;
+      border: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .rules-grid li b { color: var(--red); font-size: 13px; letter-spacing: 1px; }
+
+    /* FAQ */
+
+    .faq { padding: 75px 0; }
+
+    .faq-list { max-width: 800px; border-top: 1px solid var(--border); }
+    .faq-list details { border-bottom: 1px solid var(--border); }
+
+    .faq-list summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: var(--red); font-size: 22px; font-weight: 900; }
+    .faq-list details[open] summary::after { content: "–"; }
+
+    .faq-list details p { padding: 0 0 18px; color: var(--muted); font-size: 14px; max-width: 680px; }
+
+    /* COMMUNITY */
+
+    .community { padding: 60px 0; background: var(--black); color: white; }
+
+    .community-layout { display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+
+    .community h2 { margin: 8px 0; font-size: clamp(24px, 3.5vw, 34px); line-height: 1.15; letter-spacing: -1px; }
+    .community p { color: #bdbdbd; font-size: 14px; }
+    .community-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .button-light { background: white; color: var(--black); border-color: white; }
+    .button-light:hover { background: #e9e9e9; border-color: #e9e9e9; }
+
+    @media (max-width: 850px) {
+      .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .info-item { border-bottom: 1px solid var(--border); }
+      .info-item:nth-child(odd) { border-left: 1px solid var(--border); }
+      .rules-grid { grid-template-columns: 1fr; }
+      .community-layout { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 600px) {
+      .info-item { padding: 18px 14px; }
+      .info-value { font-size: 19px; }
+      .rules, .faq { padding: 55px 0; }
+    }
+  
+    /* THEME TOGGLE */
+    .theme-toggle { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 12px; border: 1px solid var(--border); background: #ffffff; color: var(--black); font: inherit; font-size: 12px; font-weight: 800; cursor: pointer; }
+    .theme-toggle:hover { border-color: var(--red); color: var(--red); }
+    html[data-theme="dark"] { color-scheme: dark; --white: #191919; --black: #f4f4f4; --muted: #b7b7b7; --border: #3b3b3b; --soft: #242424; background: #191919; }
+    html[data-theme="dark"] body { background: #191919; }
+    html[data-theme="dark"] .site-header, html[data-theme="dark"] .info-strip, html[data-theme="dark"] .mode-card, html[data-theme="dark"] .ability-slot, html[data-theme="dark"] .rules-grid li { background: #202020; }
+    html[data-theme="dark"] .hero-art, html[data-theme="dark"] .mode-image { background: #292929; }
+    html[data-theme="dark"] .button-outline { background: #202020; }
+    html[data-theme="dark"] .theme-toggle { background: #202020; color: var(--black); border-color: var(--border); }
+
+    /* ANNOUNCEMENT + CLOSED STATE */
+    .site-banner { padding: 10px 16px; background: var(--red); color: #ffffff; font-size: 14px; font-weight: 700; text-align: center; }
+    .info-sub { margin-top: 2px; color: var(--muted); font-size: 12px; }
+    .is-closed, .button.is-closed:hover { background: #8a8a8a; border-color: #8a8a8a; color: #ffffff; pointer-events: none; cursor: not-allowed; }
+    .details-link.is-closed, .details-link.is-closed:hover { background: none; border: 0; color: var(--muted); text-decoration: none; }
+  </style>
+</head>
+
+<body>
+
+  <div class="site-banner" id="site-banner" role="status" hidden></div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="RIVALRY home">
+        <span class="brand-mark">R</span>
+        <span>RIVALRY</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-secondary" href="#tournaments">Tournaments</a>
+        <a class="nav-secondary" href="payment.html">Payment</a>
+        <a class="nav-secondary" href="#how-it-works">How it works</a>
+        <a class="nav-secondary" href="#rules">Rules</a>
+        <a class="nav-secondary" href="#faq">FAQ</a>
+        <button class="theme-toggle" type="button" data-theme-toggle>☾ Dark mode</button>
+        <a class="button" href="#tournaments">Compete ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="container hero-layout">
+
+        <div class="hero-text">
+          <div class="eyebrow">VALORANT COMMUNITY TOURNAMENTS</div>
+
+          <h1>
+            YOUR GAME.<br>
+            YOUR <span>RIVALRY.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Step into the arena. Challenge other players, bring your team
+            together and prove your skill in community tournaments.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#tournaments">Explore tournaments ↗</a>
+            <a class="button button-outline" href="#how-it-works">How to join</a>
+          </div>
+
+          <p class="hero-note">
+            5v5 Squad — bring your five-player team and compete.
+          </p>
+        </div>
+
+        <div class="hero-art">
+          <img class="hero-image" src="images/valorant-hero.webp" width="480" height="640" fetchpriority="high" alt="VALORANT agent artwork">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INFO STRIP -->
+    <section class="info-strip" aria-label="Tournament at a glance">
+      <div class="container info-grid">
+        <div class="info-item"><div class="info-label">Starts in</div><div class="info-value is-red" id="countdown">Date soon</div><div class="info-sub" id="date-text" hidden></div></div>
+        <div class="info-item"><div class="info-label">Prize pool</div><div class="info-value" id="prize">To be announced</div></div>
+        <div class="info-item"><div class="info-label">Formats</div><div class="info-value">5v5 Squad</div></div>
+        <div class="info-item"><div class="info-label">Entry fee</div><div class="info-value">₹<span data-fee>50</span> / team</div></div>
+      </div>
+    </section>
+
+    <!-- TOURNAMENT CARDS -->
+    <section class="tournaments" id="tournaments">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">THE TOURNAMENT</div>
+          <h2>5v5 Squad Showdown.</h2>
+          <p>
+            Bring a team of five, pay the entry fee and register your team
+            to lock your slot.
+          </p>
+        </div>
+
+        <div class="mode-grid">
+
+          <article class="mode-card">
+            <div class="mode-image">
+             <img src="images/squad-showdown.webp" width="597" height="335" loading="lazy" alt="Valorant Squad Showdown">
+            </div>
+
+            <div class="mode-content">
+              <div class="mode-top">
+                <span class="mode-number">SQUAD</span>
+                <span class="mode-tag">5V5</span>
+              </div>
+
+              <h3>Squad Showdown</h3>
+              <p>Bring your five-player lineup, play as a team and fight for the win.</p>
+
+              <div class="mode-bottom">
+                <div class="price">₹<span data-fee>50</span> <small>/ team</small></div>
+
+                <a class="details-link" data-register="squad"
+                   href="https://docs.google.com/forms/d/e/1FAIpQLSfw6G-g8LRn0vU9rZR_8rd8_B0Dm9-NSzytuzk2z2aziRE_Yg/viewform?usp=dialog"
+                   target="_blank" rel="noopener noreferrer">
+                  Register / Details ↗
+                </a>
+                <a class="button" data-pay-link href="payment.html">Payment ↗</a>
+              </div>
+            </div>
+          </article>
+
+
+
+        </div>
+
+        <p class="pricing-note">
+          Entry fee is ₹<span data-fee>50</span> per team of five players.
+          Use the Payment page to pay ₹<span data-fee>50</span>, then upload your screenshot with your registration.
+        </p>
+
+      </div>
+    </section>
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">THE PROCESS</div>
+          <h2>From registration to match day.</h2>
+          <p>Three simple steps to get started with RIVALRY.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">STEP 01</div>
+            <h3>Get your five-player team ready</h3>
+            <p>Register your five-player team for the 5v5 Squad Showdown.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">STEP 02</div>
+            <h3>Pay the entry fee</h3>
+            <p>Scan the payment QR and pay ₹<span data-fee>50</span> for your five-player team.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">STEP 03</div>
+            <h3>Register and upload proof</h3>
+            <p>Submit your team details with a screenshot of the successful payment, then wait for organizer confirmation.</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="abilities">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="eyebrow">THE GAME</div>
+          <h2>Built for the VALORANT community.</h2>
+          <p>
+            Meet some of the agents you will be playing with in RIVALRY
+            community tournaments.
+          </p>
+        </div>
+
+        <div class="ability-grid">
+
+          <div class="ability-slot">
+            <img src="images/agent-1.webp" width="738" height="414" loading="lazy" alt="VALORANT agent artwork 1">
+          </div>
+
+          <div class="ability-slot">
+            <img src="images/agent-2.webp" width="299" height="168" loading="lazy" alt="VALORANT agent artwork 2">
+          </div>
+
+          <div class="ability-slot">
+            <img src="images/agent-3.webp" width="400" height="500" loading="lazy" alt="VALORANT agent artwork 3">
+          </div>
+
+          <div class="ability-slot">
+            <img src="images/agent-4.webp" width="597" height="335" loading="lazy" alt="VALORANT agent artwork 4">
+          </div>
+
+          <div class="ability-slot">
+            <img src="images/agent-5.webp" width="597" height="335" loading="lazy" alt="VALORANT agent artwork 5">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RULES -->
+    <section class="rules" id="rules">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">PLAY FAIR</div>
+          <h2>Tournament rules.</h2>
+          <p>The basics every player and team agrees to when registering.</p>
+        </div>
+        <ul class="rules-grid">
+          <li><b>01</b><span>Every player needs their own VALORANT account and must enter the correct in-game ID in the form.</span></li>
+          <li><b>02</b><span>No cheats, third-party tools, smurfing or account sharing. Violations mean disqualification.</span></li>
+          <li><b>03</b><span>Be ready at the announced match time. Late teams may lose the match by default.</span></li>
+          <li><b>04</b><span>Respect everyone. Abuse, hate or harassment is not tolerated, in-game or in chat.</span></li>
+          <li><b>05</b><span>Match schedules and room details are shared with registered players only.</span></li>
+          <li><b>06</b><span>The organizers' decision on disputes is final.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">QUESTIONS</div>
+          <h2>Frequently asked questions.</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>How do I register?</summary>
+            <p>Pay the entry fee first, then open the Squad registration form and enter your five-player team details.</p>
+          </details>
+          <details>
+            <summary>How do I pay the entry fee?</summary>
+            <p>Open the Payment page to pay ₹<span data-fee>50</span>, then upload your screenshot with your registration. Your entry is confirmed after the organizer verifies the payment.</p>
+          </details>
+          <details>
+            <summary>Can I change my team after registering?</summary>
+            <p>Contact the organizers as early as possible. Changes after the schedule is published may not be possible.</p>
+          </details>
+          <details>
+            <summary>Where will match details be shared?</summary>
+            <p>Schedules, brackets and room details are shared with registered players through the community channel and the contact details you submit.</p>
+          </details>
+          <details>
+            <summary>Is this an official Riot Games event?</summary>
+            <p>No. RIVALRY is an independent community project and is not affiliated with or endorsed by Riot Games.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL REGISTRATION CTA -->
+    <section class="final-cta" id="register">
+      <div class="container cta-layout">
+
+        <div>
+          <div class="eyebrow">YOUR NEXT MATCH STARTS HERE</div>
+          <h2>Ready to enter the rivalry?</h2>
+          <p>Pay the entry fee and submit your team details.</p>
+        </div>
+
+        <a class="button" data-register="default"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSfw6G-g8LRn0vU9rZR_8rd8_B0Dm9-NSzytuzk2z2aziRE_Yg/viewform?usp=dialog"
+           target="_blank" rel="noopener noreferrer">
+          Open Registration Form ↗
+        </a>
+
+      </div>
+    </section>
+
+    <!-- COMMUNITY (shown only when a Discord/WhatsApp link is set in /admin) -->
+    <section class="community" id="community" hidden>
+      <div class="container community-layout">
+        <div>
+          <div class="eyebrow">JOIN THE COMMUNITY</div>
+          <h2>Find teammates. Get match updates.</h2>
+          <p>Schedules, announcements and scrim partners, all in one place.</p>
+        </div>
+        <div class="community-actions">
+          <a class="button button-light" id="discord-link" href="#" target="_blank" rel="noopener noreferrer" hidden>Join Discord ↗</a>
+          <a class="button" id="whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" hidden>WhatsApp group ↗</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+
+      <a class="brand" href="#home">
+        <span class="brand-mark">R</span>
+        <span>RIVALRY</span>
+      </a>
+
+      <p class="footer-copy">
+        © 2026 RIVALRY Community Tournaments. Independent community project.
+        Not affiliated with Riot Games.
+      </p>
+
+      <div class="footer-links">
+        <a href="#tournaments">Tournaments</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="payment.html">Payment</a>
+        <a href="#home">Back to top ↑</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="site-settings.js"></script>
+  <script>
+    (function () {
+      var toggle = document.querySelector("[data-theme-toggle]");
+      if (!toggle) return;
+      function syncLabel() {
+        var dark = document.documentElement.dataset.theme === "dark";
+        toggle.textContent = dark ? "☀ Light mode" : "☾ Dark mode";
+        toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+      }
+      syncLabel();
+      toggle.addEventListener("click", function () {
+        var dark = document.documentElement.dataset.theme !== "dark";
+        if (dark) document.documentElement.dataset.theme = "dark";
+        else delete document.documentElement.dataset.theme;
+        try { localStorage.setItem("rivalry-theme", dark ? "dark" : "light"); } catch (e) {}
+        syncLabel();
+      });
+    })();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
