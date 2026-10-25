@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://valorant-eoj.pages.dev/sitemap.xml
